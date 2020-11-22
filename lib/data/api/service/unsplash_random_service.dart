@@ -3,7 +3,7 @@ import 'package:unsplash_demo/data/api/model/api_tiles.dart';
 
 class UnsplashRandomService {
   /* TODO так делать нельзя, самому не нравится,
-  прошу строго не судить за этот класс, и просто не успел 
+  прошу строго не судить за этот класс и просто не успел 
   добавить человеческую обработку ошибок
   */
   String _randomUrl = 'https://api.unsplash.com/photos/random?count=';
@@ -15,13 +15,14 @@ class UnsplashRandomService {
   final Dio _dio = Dio();
 
   Future<ApiTiles> getRandomTiles(int count) async {
-    _randomUrl = '$_randomUrl$count';
+   String _url = '$_randomUrl$count';
     var _response;
     // _response =
     //       await _dio.get(_randomUrl, options: Options(headers: _headers));
     try {
       _response =
-          await _dio.get(_randomUrl, options: Options(headers: _headers));
+          await _dio.get(_url, options: Options(headers: _headers));
+
     } catch (e) {
       print('UnsplashRandomService RESPONCE ERROR $e');
     }
